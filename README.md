@@ -1,4 +1,6 @@
-# Aula 31/07/25 -> Abstração -> Entender um problema real e representar em um código 
+# Aula 31/07/25
+Abstração -> Entender um problema real e representar em um código 
+
 API -> Abstrae as funcionalidades do BackEnd
 
 Complexidade é uma forma de destacarmos um código, onde podemos separar em partes para deixar o código claro e de simples entendimento, para que em futuras manutenções, possa achar o ponto correto para alteração.
