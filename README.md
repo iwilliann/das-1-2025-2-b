@@ -1,6 +1,6 @@
 # Design e Arquitetura de Software 
 
-                                                                                                AULA 31/07/25
+                                                                                      AULA 31/07/25
 
 Abstração -> Entender um problema real e representar em um código 
 
@@ -16,9 +16,9 @@ Para concorrer em grandes Big Techs (Google, Spotify, Amazon...) precisa conhece
 
 Jogos trazem a tela bonito pra você, mas escondem por trás uma API recebendo Request e enviando Response
 
-================================================================================================================================================================================================================
+=========================================================================================================================
 
-                                                                                                AULA 04/08/25
+                                                                                       AULA 04/08/25
 
 GETTER e SETTER são utilizados para processos de encapsulamento
 
