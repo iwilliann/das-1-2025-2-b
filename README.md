@@ -1,6 +1,6 @@
 # Design e Arquitetura de Software 
 
-                                                                                      AULA 31/07/25
+  AULA 31/07/25
 
 Abstração -> Entender um problema real e representar em um código 
 
@@ -18,7 +18,7 @@ Jogos trazem a tela bonito pra você, mas escondem por trás uma API recebendo R
 
 =========================================================================================================================
 
-                                                                                       AULA 04/08/25
+  AULA 04/08/25
 
 GETTER e SETTER são utilizados para processos de encapsulamento
 
@@ -31,4 +31,31 @@ Acoplamento -> Maximiza a coesão das classes e miniza o acoplamentos entre elas
 - Utilizar um código acoplado, quer dizer que códigos de fora não podem entrar e se vincular para utilização do código
 
 - Utilizar um código não acoplado, quer dizer que códigos de fora podem ser utilizados, mesmo sem participar de todos o processo da criação do código, pois se encontra para utilização (Exemplo: Entrada USB - Headset, mouse, teclado)
+
+=========================================================================================================================
+AULA 07/08
+
+Robert Martin:
+  - Clean Architeture
+  - Clean Code
+  - Clean Encoder
+
+S -> Single Responsibilty Principle
+     Aplicação direto da ideia de coesão "Existir um único motivo para modificar uma classe do sistema"
+     Entity -> Dados
+     Repository -> JPA Spring Data
+     Services -> Lógica (Use Cases)
+     Controller -> API Rest
+    
+     
+
+O -> Open/Closed Principle
+     
+
+L -> Liskov Substitution Principle
+
+I -> Interface Segregation Principle
+     Segregação de Interface -> Ter uma métodos para cada interface para implementar
+
+D -> Dependency Inversion Principle
 
