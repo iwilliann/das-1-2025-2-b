@@ -16,8 +16,8 @@ Para concorrer em grandes Big Techs (Google, Spotify, Amazon...) precisa conhece
 
 Jogos trazem a tela bonito pra você, mas escondem por trás uma API recebendo Request e enviando Response
 
-=========================================================================================================================
-
+===========================================================================
+                                                                           
   AULA 04/08/25
 
 GETTER e SETTER são utilizados para processos de encapsulamento
@@ -32,7 +32,7 @@ Acoplamento -> Maximiza a coesão das classes e miniza o acoplamentos entre elas
 
 - Utilizar um código não acoplado, quer dizer que códigos de fora podem ser utilizados, mesmo sem participar de todos o processo da criação do código, pois se encontra para utilização (Exemplo: Entrada USB - Headset, mouse, teclado)
 
-=========================================================================================================================
+===========================================================================
 AULA 07/08
 
 Robert Martin:
@@ -47,9 +47,9 @@ S -> Single Responsibilty Principle
      Services -> Lógica (Use Cases)
      Controller -> API Rest
     
-     
-
 O -> Open/Closed Principle
+  - Classe que deve estar fechada para modificações e aberta para extensões
+  - Alterar o código principal, sem precisar mexer no código, extendendo ele em uma outra classe e modificando os métodos
      
 
 L -> Liskov Substitution Principle
@@ -59,3 +59,20 @@ I -> Interface Segregation Principle
 
 D -> Dependency Inversion Principle
 
+===========================================================================
+
+AULA 11/08
+
+Classe (Controladores) deve estabelecer depencias prioritariamente com abstrações (Interface de serviço) e não com implementações concretas (Interface Impl)
+
+Herança expõe para subclasses detalhes de implementação das classes pai. Logo, frequentemente diz-se que herança viola o encapsulamento
+
+Herança não é a bala de prata, com ela, não é possível corrigir todos os problemas do código (pode até criar outros)
+
+Um método pode chamar qualquer coisa que esteja instaciado dentro dele
+
+Só pode implementar outros métodos seguindo os dados: 
+ - Dados da própria classe]
+ - Objetos passados por parâmetro
+ - Objetos criado pelo próprio método
+ - Atributos de classes do método
