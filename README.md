@@ -53,9 +53,10 @@ O -> Open/Closed Principle
      
 
 L -> Liskov Substitution Principle
+   - Manter assinatura dos filhos (métodos) que herdou do pai, sem modificar as heranças. Se trocar os métodos, não afetará o código e irá continuar funcionando sem problemas
 
 I -> Interface Segregation Principle
-     Segregação de Interface -> Ter uma métodos para cada interface para implementar
+     Segregação de Interface -> Ter uma métodos em cada interface para implementar
 
 D -> Dependency Inversion Principle
 
