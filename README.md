@@ -84,4 +84,8 @@ Aula 18/08
 
 Design Patterns
 
+sublinhado em uma diagrama UML, seria para mostrar que a variável/atributo seria estático (static)
 
+Variáveis globais são static.
+
+Design Pattern aponta para ele mesmo no UML
