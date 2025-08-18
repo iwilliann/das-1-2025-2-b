@@ -77,3 +77,11 @@ Só pode implementar outros métodos seguindo os dados:
  - Objetos passados por parâmetro
  - Objetos criado pelo próprio método
  - Atributos de classes do método
+
+===========================================================================
+
+Aula 18/08
+
+Design Patterns
+
+
