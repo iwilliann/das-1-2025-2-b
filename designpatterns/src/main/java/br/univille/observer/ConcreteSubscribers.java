@@ -1,5 +1,9 @@
 package br.univille.observer;
 
-public interface ConcreteSubscribers {
+public class ConcreteSubscribers implements Subscriber{
+    
+    public void update(String context) {
+        System.out.println(context);
+    }
 
 }
