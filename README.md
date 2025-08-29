@@ -89,3 +89,86 @@ sublinhado em uma diagrama UML, seria para mostrar que a variável/atributo seri
 Variáveis globais são static.
 
 Design Pattern aponta para ele mesmo no UML
+
+===========================================================================
+
+Aula 28/08
+
+Arquitetura de Software
+
+Características de Arquitetura (Qualidades do Sistema)
+
+São chamadas também de atributos de qualidade ou requisitos não funcionais.
+
+Diferente dos requisitos funcionais (que descrevem o que o sistema faz), elas descrevem como o sistema deve se comportar.
+
+Não são necessárias para o sistema “funcionar” de forma básica, mas garantem que ele seja eficiente, seguro, escalável e confiável no ambiente real de uso.
+
+Exemplos de características:
+
+Disponibilidade → tempo em que o sistema fica acessível sem interrupções.
+
+Confiabilidade → capacidade de executar sem erros frequentes.
+
+Testabilidade → facilidade de testar automaticamente e validar o sistema.
+
+Escalabilidade → capacidade de crescer conforme a demanda (ex: mais usuários).
+
+Segurança → proteção contra acessos não autorizados, vazamento de dados.
+
+Agilidade → velocidade em adaptar-se a mudanças do negócio.
+
+Tolerância a falhas → continuar funcionando mesmo que partes falhem.
+
+Elasticidade → aumentar ou reduzir recursos de forma dinâmica (ex: em cloud).
+
+Recuperabilidade → tempo de recuperação após falhas.
+
+Desempenho → tempo de resposta e uso eficiente dos recursos.
+
+Implementabilidade → facilidade de implementar, integrar e evoluir.
+
+Capacidade de aprendizagem → facilidade de compreensão pela equipe de desenvolvimento.
+
+💡 Exemplo:
+Uma aplicação de Supply Chain pode usar Kubernetes para garantir elasticidade, escalabilidade e tolerância a falhas, já que a carga de pedidos varia bastante em períodos diferentes (ex: Black Friday).
+
+---------------------------
+
+2. Decisões de Arquitetura
+
+São escolhas sobre tecnologias, modelos e práticas que atendam os requisitos funcionais e de qualidade.
+
+Normalmente seguem padrões ou soluções já consolidadas no mercado para reduzir riscos.
+
+Exemplos:
+
+Escolher Java + Spring Boot para um sistema financeiro, porque já é consolidado e bem aceito (ex: Conta Azul).
+
+Definir se o sistema será monolítico ou de microsserviços.
+
+Decidir se usará banco relacional (MySQL, PostgreSQL) ou NoSQL (MongoDB).
+
+Optar por arquitetura em nuvem com containers e Kubernetes para gerenciar a escalabilidade.
+
+---------------------------
+
+3. Princípios de Arquitetura
+
+São diretrizes que orientam as decisões para manter consistência e qualidade.
+
+Devem ser aplicados de forma contínua em todo o desenvolvimento.
+
+Exemplo do texto:
+
+Mensageria assíncrona: em sistemas de microsserviços, a comunicação via mensagens (ex: Kafka, RabbitMQ) é preferida em vez de chamadas síncronas (REST), pois:
+
+Aumenta o desempenho.
+
+Reduz o acoplamento entre serviços.
+
+Melhora a resiliência: se um serviço estiver fora do ar, a mensagem é processada depois.
+
+💡 Exemplo prático:
+No Supply Chain, um serviço de pagamento publica um evento "Pagamento Aprovado".
+Outros serviços interessados (ex: estoque, faturamento) recebem e processam esse evento de forma assíncrona, sem depender diretamente do pagamento estar online no mesmo instante.
