@@ -172,3 +172,15 @@ Melhora a resiliência: se um serviço estiver fora do ar, a mensagem é process
 💡 Exemplo prático:
 No Supply Chain, um serviço de pagamento publica um evento "Pagamento Aprovado".
 Outros serviços interessados (ex: estoque, faturamento) recebem e processam esse evento de forma assíncrona, sem depender diretamente do pagamento estar online no mesmo instante.
+
+===========================================================================
+
+Aula 04/09
+
+Arquitetura vs Design
+
+Pode ser confusa as vezes, pois precisam se comunicar/entender para o projeto dar seguimento sem atrasos. A parte da arquitetura seria responsável pela análise dos requisitos comerciais para extração e difinição das características da arquitetura. Esses processos são repassados para a equipe de desenvolvimento, que é responsável pela criação de diagramas de classe, criação de telas de interface e codifição e teste do código-fonte. 
+Algumas decisões que a equipe de arquitetura toma, não está de acordo com a equipe de desenvolvimento e não funciona para as duas equipes. E as decisões da equipe de desenvolvimento, não atende as especificações da arquitetura. Dessa maneira, as duas equipes não se conversam e não se entendem para dar prosseguimento no projeto em acordo com ambos.
+Para fazer a arquitetura funcionar, arquiteto e desenovolvedor devem saber se comunicar corretamente, precisam estar no mesmo espaço de ideias e conhecimento, estando de acordo com todos os processos e decisões tomadas pela equipe ao longo do projeto.
+
+Arquivo T
