@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Subscriber",
+            "request": "launch",
+            "mainClass": "br.univille.Subscriber",
+            "projectName": "eventos"
+        },
+        {
+            "type": "java",
+            "name": "Publisher",
+            "request": "launch",
+            "mainClass": "br.univille.Publisher",
+            "projectName": "eventos"
+        },
+        {
+            "type": "java",
+            "name": "Launch Java Program",
+            "request": "launch",
+            "mainClass": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
