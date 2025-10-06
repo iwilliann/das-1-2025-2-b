@@ -1,186 +1,193 @@
-# Design e Arquitetura de Software 
+# Design e Arquitetura de Software
 
-  AULA 31/07/25
+Resumo de aulas e anotações sobre princípios de design, arquitetura e boas práticas de desenvolvimento de software.
 
-Abstração -> Entender um problema real e representar em um código 
+---
 
-API -> Abstrae as funcionalidades do BackEnd
+## Aula 31/07/2025
 
-Complexidade é uma forma de destacarmos um código, onde podemos separar em partes para deixar o código claro e de simples entendimento, para que em futuras manutenções, possa achar o ponto correto para alteração.
-Uma boa notação do código é essencial para ter uma visão clara do código, o que ajuda a referenciar métodos e atributos e entender como o código está funcionando.
+### Abstração
+- Consiste em entender um problema real e representá-lo em código.
+- API: abstrai as funcionalidades do Back-End.
 
-Frameworks são todos iguais, então aprender e focar em 1, aprende utilizar todos
-Escolha do framework para implementar o código é fundamental para o procedimento do sistema.
+### Complexidade e Clareza
+- Separar o código em partes torna-o mais claro e simples de entender.
+- Facilita futuras manutenções e identificações de pontos de alteração.
+- Uma boa notação e organização ajudam a compreender o funcionamento do sistema.
 
-Para concorrer em grandes Big Techs (Google, Spotify, Amazon...) precisa conhecer Estrutura de Dados (Grafos, Árvores...)
+### Frameworks
+- Todos compartilham conceitos semelhantes — aprender um facilita o aprendizado dos outros.
+- A escolha do framework é fundamental para o sucesso do sistema.
 
-Jogos trazem a tela bonito pra você, mas escondem por trás uma API recebendo Request e enviando Response
+### Estruturas de Dados
+- Para atuar em grandes Big Techs (Google, Spotify, Amazon...), é essencial conhecer:
+  - Grafos
+  - Árvores
+  - Estruturas de Dados em geral
 
-===========================================================================
-                                                                           
-  AULA 04/08/25
+### Curiosidade
+- Jogos exibem apenas a interface bonita ao usuário, mas internamente fazem uso de APIs que enviam requests e recebem responses.
 
-GETTER e SETTER são utilizados para processos de encapsulamento
+---
 
-Coesão -> - Facilita a implementação de uma classe, bem como o seu entendimento e manutenção
-          - Facilita a aloação de um único responsável por manter uma classe
-          - Facilita o reúso e teste de uma classe, pois é mais simples reusar e testar uma classe coesa do que uma classe com várias responsabilidades
+## Aula 04/08/2025
 
-Acoplamento -> Maximiza a coesão das classes e miniza o acoplamentos entre elas 
+### Encapsulamento
+- Getters e Setters são utilizados para proteger os atributos de uma classe.
 
-- Utilizar um código acoplado, quer dizer que códigos de fora não podem entrar e se vincular para utilização do código
+### Coesão
+- Facilita a implementação, manutenção e entendimento de uma classe.
+- Torna o código mais fácil de testar e reutilizar.
+- Cada classe deve ter uma única responsabilidade.
 
-- Utilizar um código não acoplado, quer dizer que códigos de fora podem ser utilizados, mesmo sem participar de todos o processo da criação do código, pois se encontra para utilização (Exemplo: Entrada USB - Headset, mouse, teclado)
+### Acoplamento
+- Minimizar o acoplamento entre classes maximiza a coesão.
+- Código acoplado: fechado para interações externas.
+- Código desacoplado: aberto para integração com outros componentes (exemplo: portas USB — headset, mouse, teclado).
 
-===========================================================================
-AULA 07/08
+---
 
-Robert Martin:
-  - Clean Architeture
-  - Clean Code
-  - Clean Encoder
+## Aula 07/08/2025 — Princípios SOLID (Robert C. Martin)
 
-S -> Single Responsibilty Principle
-     Aplicação direto da ideia de coesão "Existir um único motivo para modificar uma classe do sistema"
-     Entity -> Dados
-     Repository -> JPA Spring Data
-     Services -> Lógica (Use Cases)
-     Controller -> API Rest
-    
-O -> Open/Closed Principle
-  - Classe que deve estar fechada para modificações e aberta para extensões
-  - Alterar o código principal, sem precisar mexer no código, extendendo ele em uma outra classe e modificando os métodos
-     
+### S — Single Responsibility Principle
+- Cada classe deve ter um único motivo para mudar.
+- Aplicação direta do conceito de coesão.
+- Camadas comuns:
+  - Entity → Dados
+  - Repository → Persistência (Spring Data JPA)
+  - Service → Lógica de negócio (use cases)
+  - Controller → API REST
 
-L -> Liskov Substitution Principle
-   - Manter assinatura dos filhos (métodos) que herdou do pai, sem modificar as heranças. Se trocar os métodos, não afetará o código e irá continuar funcionando sem problemas
+### O — Open/Closed Principle
+- Classes devem estar fechadas para modificação e abertas para extensão.
+- É possível estender funcionalidades sem alterar o código original.
 
-I -> Interface Segregation Principle
-     Segregação de Interface -> Ter uma métodos em cada interface para implementar
+### L — Liskov Substitution Principle
+- As subclasses devem poder substituir suas superclasses sem quebrar o sistema.
+- Métodos herdados devem manter assinaturas e comportamentos compatíveis.
 
-D -> Dependency Inversion Principle
+### I — Interface Segregation Principle
+- Prefira várias interfaces específicas a uma interface genérica.
+- Cada interface deve ter responsabilidade única.
 
-===========================================================================
+### D — Dependency Inversion Principle
+- As classes devem depender de abstrações, não de implementações concretas.
+- No Spring, isso é feito com o uso de @Autowired para injeção de dependências.
 
-AULA 11/08
+---
 
-Classe (Controladores) deve estabelecer depencias prioritariamente com abstrações (Interface de serviço) e não com implementações concretas (Interface Impl)
+## Aula 11/08/2025
 
-Herança expõe para subclasses detalhes de implementação das classes pai. Logo, frequentemente diz-se que herança viola o encapsulamento
+- Controladores devem depender de interfaces (serviços), não de classes concretas.
+- Herança:
+  - Expõe detalhes internos da classe pai, podendo violar o encapsulamento.
+  - Não é uma “bala de prata” — pode gerar novos problemas.
+- Um método só pode acessar:
+  - Dados da própria classe.
+  - Objetos passados por parâmetro.
+  - Objetos criados dentro do método.
+  - Atributos da classe.
 
-Herança não é a bala de prata, com ela, não é possível corrigir todos os problemas do código (pode até criar outros)
+---
 
-Um método pode chamar qualquer coisa que esteja instaciado dentro dele
+## Aula 18/08/2025 — Design Patterns
 
-Só pode implementar outros métodos seguindo os dados: 
- - Dados da própria classe]
- - Objetos passados por parâmetro
- - Objetos criado pelo próprio método
- - Atributos de classes do método
+- Em diagramas UML, atributos sublinhados indicam que são static.
+- Variáveis globais também são static.
+- Design Patterns ajudam a padronizar soluções recorrentes.
 
-===========================================================================
+---
 
-Aula 18/08
+## Aula 28/08/2025 — Arquitetura de Software
 
-Design Patterns
+### Características de Arquitetura (Qualidades do Sistema)
+Também chamadas de atributos de qualidade ou requisitos não funcionais.
 
-sublinhado em uma diagrama UML, seria para mostrar que a variável/atributo seria estático (static)
+Diferem dos requisitos funcionais (o que o sistema faz), pois definem como o sistema deve se comportar.
 
-Variáveis globais são static.
+Exemplos e significados:
 
-Design Pattern aponta para ele mesmo no UML
+- **Disponibilidade:** tempo em que o sistema permanece acessível sem interrupções.  
+- **Confiabilidade:** capacidade de executar sem falhas frequentes.  
+- **Testabilidade:** facilidade de testar e validar o sistema automaticamente.  
+- **Escalabilidade:** capacidade de crescer conforme a demanda (exemplo: mais usuários).  
+- **Segurança:** proteção contra acessos não autorizados e vazamento de dados.  
+- **Agilidade:** facilidade e velocidade para se adaptar a mudanças de negócio.  
+- **Tolerância a falhas:** habilidade de continuar funcionando mesmo com falhas parciais.  
+- **Elasticidade:** capacidade de aumentar ou reduzir recursos dinamicamente (exemplo: em cloud).  
+- **Recuperabilidade:** tempo necessário para se recuperar de uma falha.  
+- **Desempenho:** tempo de resposta e uso eficiente dos recursos.  
+- **Implementabilidade:** facilidade de implementar, integrar e evoluir o sistema.  
+- **Capacidade de aprendizado:** facilidade de compreensão e manutenção pelo time de desenvolvimento.
 
-===========================================================================
+Exemplo:
+Um sistema de Supply Chain pode usar Kubernetes para garantir elasticidade, escalabilidade e tolerância a falhas durante picos de demanda como a Black Friday.
 
-Aula 28/08
+---
 
-Arquitetura de Software
-
-Características de Arquitetura (Qualidades do Sistema)
-
-São chamadas também de atributos de qualidade ou requisitos não funcionais.
-
-Diferente dos requisitos funcionais (que descrevem o que o sistema faz), elas descrevem como o sistema deve se comportar.
-
-Não são necessárias para o sistema “funcionar” de forma básica, mas garantem que ele seja eficiente, seguro, escalável e confiável no ambiente real de uso.
-
-Exemplos de características:
-
-Disponibilidade → tempo em que o sistema fica acessível sem interrupções.
-
-Confiabilidade → capacidade de executar sem erros frequentes.
-
-Testabilidade → facilidade de testar automaticamente e validar o sistema.
-
-Escalabilidade → capacidade de crescer conforme a demanda (ex: mais usuários).
-
-Segurança → proteção contra acessos não autorizados, vazamento de dados.
-
-Agilidade → velocidade em adaptar-se a mudanças do negócio.
-
-Tolerância a falhas → continuar funcionando mesmo que partes falhem.
-
-Elasticidade → aumentar ou reduzir recursos de forma dinâmica (ex: em cloud).
-
-Recuperabilidade → tempo de recuperação após falhas.
-
-Desempenho → tempo de resposta e uso eficiente dos recursos.
-
-Implementabilidade → facilidade de implementar, integrar e evoluir.
-
-Capacidade de aprendizagem → facilidade de compreensão pela equipe de desenvolvimento.
-
-💡 Exemplo:
-Uma aplicação de Supply Chain pode usar Kubernetes para garantir elasticidade, escalabilidade e tolerância a falhas, já que a carga de pedidos varia bastante em períodos diferentes (ex: Black Friday).
-
----------------------------
-
-2. Decisões de Arquitetura
-
-São escolhas sobre tecnologias, modelos e práticas que atendam os requisitos funcionais e de qualidade.
-
-Normalmente seguem padrões ou soluções já consolidadas no mercado para reduzir riscos.
+### Decisões de Arquitetura
+Escolhas sobre tecnologias, modelos e práticas que atendem requisitos funcionais e de qualidade.
 
 Exemplos:
+- Java + Spring Boot para sistemas financeiros.
+- Arquitetura monolítica ou de microsserviços.
+- Banco relacional (MySQL, PostgreSQL) vs NoSQL (MongoDB).
+- Uso de containers e Kubernetes para escalabilidade.
 
-Escolher Java + Spring Boot para um sistema financeiro, porque já é consolidado e bem aceito (ex: Conta Azul).
+---
 
-Definir se o sistema será monolítico ou de microsserviços.
+### Princípios de Arquitetura
+Diretrizes que mantêm consistência e qualidade ao longo do projeto.
 
-Decidir se usará banco relacional (MySQL, PostgreSQL) ou NoSQL (MongoDB).
+Exemplo:
+Mensageria assíncrona com Kafka ou RabbitMQ aumenta desempenho e reduz acoplamento entre microsserviços.
 
-Optar por arquitetura em nuvem com containers e Kubernetes para gerenciar a escalabilidade.
+---
 
----------------------------
+## Aula 04/09/2025 — Arquitetura vs Design
 
-3. Princípios de Arquitetura
+- A arquitetura define requisitos comerciais e técnicos.
+- O design implementa a parte prática (diagramas, telas, código, testes).
+- Comunicação entre arquitetos e desenvolvedores é essencial.
+- Arquitetos têm amplitude técnica; desenvolvedores, profundidade técnica.
+- Em arquitetura, tudo é um trade-off — não existe solução perfeita.
 
-São diretrizes que orientam as decisões para manter consistência e qualidade.
+---
 
-Devem ser aplicados de forma contínua em todo o desenvolvimento.
+## Aula 08/09/2025 — Pensamento Arquitetônico e Trade-offs
 
-Exemplo do texto:
+### Trade-offs
+Abrir mão de simplicidade pode aumentar desempenho, escalabilidade ou robustez.
 
-Mensageria assíncrona: em sistemas de microsserviços, a comunicação via mensagens (ex: Kafka, RabbitMQ) é preferida em vez de chamadas síncronas (REST), pois:
+### Padrões de Mensageria
 
-Aumenta o desempenho.
+Tópico (Publisher–Subscriber)
+- 1 para muitos
+- Alta escalabilidade, mais impacto.
+- Mensagem é enviada para todos os inscritos.
 
-Reduz o acoplamento entre serviços.
+Fila (Producer–Consumer)
+- 1 para 1
+- Mais controle, menos impacto.
+- Cada mensagem é consumida apenas uma vez.
 
-Melhora a resiliência: se um serviço estiver fora do ar, a mensagem é processada depois.
+Combinar fila e tópico cria um buffer, reduz acoplamento mas aumenta custo.
 
-💡 Exemplo prático:
-No Supply Chain, um serviço de pagamento publica um evento "Pagamento Aprovado".
-Outros serviços interessados (ex: estoque, faturamento) recebem e processam esse evento de forma assíncrona, sem depender diretamente do pagamento estar online no mesmo instante.
+---
 
-===========================================================================
+## Resumo — Livro, Capítulo 4
 
-Aula 04/09
+### Definição das Características da Arquitetura
+Cada característica deve ser:
+1. Específica
+2. Ter influência estrutural
+3. Ser essencial ou importante
 
-Arquitetura vs Design
+Tipos de características:
+- Operacionais → disponibilidade, desempenho, confiabilidade
+- Estruturais → configuração, extensão, manutenção, portabilidade
+- Transversais → acessibilidade, segurança, usabilidade
 
-Pode ser confusa as vezes, pois precisam se comunicar/entender para o projeto dar seguimento sem atrasos. A parte da arquitetura seria responsável pela análise dos requisitos comerciais para extração e difinição das características da arquitetura. Esses processos são repassados para a equipe de desenvolvimento, que é responsável pela criação de diagramas de classe, criação de telas de interface e codifição e teste do código-fonte. 
-Algumas decisões que a equipe de arquitetura toma, não está de acordo com a equipe de desenvolvimento e não funciona para as duas equipes. E as decisões da equipe de desenvolvimento, não atende as especificações da arquitetura. Dessa maneira, as duas equipes não se conversam e não se entendem para dar prosseguimento no projeto em acordo com ambos.
-Para fazer a arquitetura funcionar, arquiteto e desenovolvedor devem saber se comunicar corretamente, precisam estar no mesmo espaço de ideias e conhecimento, estando de acordo com todos os processos e decisões tomadas pela equipe ao longo do projeto.
-
-Arquivo T
+### Adequação Funcional
+- Mede o quanto as funções do sistema atendem às necessidades do usuário.
+- Inclui: totalidade funcional, correção e
