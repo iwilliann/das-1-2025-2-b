@@ -379,9 +379,3 @@ Inclui aspectos como:
 - Correção.  
 - Precisão dos resultados.  
 
----
-
-## Conclusão
-Não existe a melhor arquitetura — existe a menos pior.  
-O papel do arquiteto é equilibrar os trade-offs e garantir que o sistema seja **sustentável, escalável e compreensível** a longo prazo.
-
