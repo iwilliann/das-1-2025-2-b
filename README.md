@@ -379,3 +379,17 @@ Inclui aspectos como:
 - Correção.  
 - Precisão dos resultados.  
 
+## Aula 20/10/2025
+
+###Estilo de Arquitetura em Camadas
+
+Também conhecida como estilo de arquitetura n-tier - multicamadas - é o padrão de fato da maioria das aplicações, por sua implicidade, familiaridade e baixo custo. Essas camadas organizacionais se encaixam bem nos níveis de uma arquitetura em camada tradicional, se tornando uma escolha natural.
+
+###Topologia
+
+São organizados em camadas horizontais lógicas, cada camada tem ma função específica dentro da aplicação (como lógica de apresentação ou lógica de negócio). a maioria das arquiteturas em camadas consiste em quatro camadas padrão: 
+
+- **Apresentação ->
+- **Comercial ->
+- **Persistência ->
+- **Banco de Dados -> 
