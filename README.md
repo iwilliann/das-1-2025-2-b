@@ -381,15 +381,30 @@ Inclui aspectos como:
 
 ## Aula 20/10/2025
 
-###Estilo de Arquitetura em Camadas
+### Estilo de Arquitetura em Camadas
 
 Também conhecida como estilo de arquitetura n-tier - multicamadas - é o padrão de fato da maioria das aplicações, por sua implicidade, familiaridade e baixo custo. Essas camadas organizacionais se encaixam bem nos níveis de uma arquitetura em camada tradicional, se tornando uma escolha natural.
 
-###Topologia
+### Topologia
 
 São organizados em camadas horizontais lógicas, cada camada tem ma função específica dentro da aplicação (como lógica de apresentação ou lógica de negócio). a maioria das arquiteturas em camadas consiste em quatro camadas padrão: 
 
-- **Apresentação ->
-- **Comercial ->
-- **Persistência ->
-- **Banco de Dados -> 
+- **Apresentação** ->
+- **Comercial** ->
+- **Persistência** ->
+- **Banco de Dados** -> 
+
+## Aula 03/11/2025
+
+### Estilo de Arquitetura Microkernel
+
+Estilo de Arquitetura Microkernel é utlizado há decadas e ainda é utilizado nos dias atuais. É um ajuste natural para os aplicativos em produto (empacotado e disponibilizados para download e instalação com uma única implementação monolítica).
+
+### Topologia
+
+Estrutura monolítica relativamente simples que consiste em dois componentes da arquitetura: Sistema Central e Componentes de Plug-in. A lógica é dividida em componentes de plug-in e o sistema central básico, fornecendo extensão, adaptação e isolamento dos recursos da aplicação e lógica de processamento personalizada.
+
+### Sistema Central
+
+Definido como a funcionalidade mínima requerida para rodar o sistema, como a IDE Elipse. Pois seria apenas um editor de texto básico: abrir o arquivo, alterar o texto e salvar o arquivo. Remove a complexidade ciclomática do sistema central e colocá-la em componentesde plug-in separados permite uma melhor extensão e manutenção.
+Em vez e colocar toda a personalização específica no sistema central com muita complexidade ciclomática, é muito melhor criar um componente de plug-in separado para cada dispositivo eletrônico avalidado. Adicionar um novo dispositivo eletrônica para avaliar é uma simples questão de adicionar um novo componetente de plug-in  atualizar o registro
