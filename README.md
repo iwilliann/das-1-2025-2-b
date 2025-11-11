@@ -389,10 +389,57 @@ Também conhecida como estilo de arquitetura n-tier - multicamadas - é o padrã
 
 São organizados em camadas horizontais lógicas, cada camada tem ma função específica dentro da aplicação (como lógica de apresentação ou lógica de negócio). a maioria das arquiteturas em camadas consiste em quatro camadas padrão: 
 
-- **Apresentação** ->
-- **Comercial** ->
-- **Persistência** ->
-- **Banco de Dados** -> 
+**Apresentação** -> Responsável pela interface com o usuário, exibindo informações e recebendo entradas.
+**Comercial (ou Negócio)** -> Contém a lógica de negócio, ou seja, as regras e processos que definem o funcionamento do sistema.
+**Persistência** -> Faz a ponte entre a lógica de negócio e o banco de dados, gerenciando o acesso e a manipulação dos dados.
+**Banco de Dados** -> Onde os dados são armazenados de forma permanente, sendo acessados e atualizados pelas camadas superiores.
+
+## Tipos de Filtros
+
+Os filtros são autônomos e independentes, geralmente sem estado, e devem realizar apenas uma tarefa. Processos mais complexos são obtidos encadeando vários filtros.
+
+**Produtor →** Inicia o processo, gerando a saída inicial (fonte de dados).
+
+**Transformador →** Recebe dados, realiza transformações e os envia ao próximo filtro.
+
+**Verificador →** Testa condições nos dados e decide se produz uma nova saída.
+
+**Consumidor →** Encerramento do processo, armazenando ou exibindo o resultado final.
+
+## Características
+
+- Comunicação unidirecional entre os filtros.
+
+- Alta reutilização e composição modular.
+
+- Facilita testes, manutenção e extensão do sistema.
+
+## Classificações das Características da Arquitetura
+
+## Definição
+
+As classificações das características da arquitetura servem para avaliar o desempenho e a adequação de um estilo arquitetural em relação a diferentes atributos. Essa avaliação é normalmente representada em uma escala de estrelas:
+As definições detalhadas de cada característica podem ser encontradas no Capítulo 4, onde são classificadas como operacionais, estruturais ou transversais.
+
+## Estilo Pipeline
+
+O estilo de arquitetura Pipeline (Pipes and Filters) é considerado uma arquitetura particionada tecnicamente, pois divide a lógica da aplicação em filtros específicos — produtor, verificador, transformador e consumidor — que processam dados de forma sequencial e independente.
+
+Mesmo sendo modular, esse estilo geralmente é implementado como uma aplicação monolítica, o que significa que seu quantum arquitetural (a menor unidade de implantação) é único.
+
+## Características Principais
+
+- Particionamento técnico da lógica de processamento.
+
+- Alta coesão e baixo acoplamento entre os filtros.
+
+- Estrutura linear e unidirecional de fluxo de dados.
+
+- Implementação monolítica, mas modular internamente.
+
+## Exemplo
+
+Assim como em um pipeline de processamento, cada filtro executa uma etapa isolada — por exemplo, ler dados, transformá-los, validar informações e exibir o resultado. Essa abordagem demonstra como a combinação de componentes simples pode resolver problemas complexos de forma eficiente.
 
 ## Aula 03/11/2025
 
@@ -408,3 +455,44 @@ Estrutura monolítica relativamente simples que consiste em dois componentes da 
 
 Definido como a funcionalidade mínima requerida para rodar o sistema, como a IDE Elipse. Pois seria apenas um editor de texto básico: abrir o arquivo, alterar o texto e salvar o arquivo. Remove a complexidade ciclomática do sistema central e colocá-la em componentesde plug-in separados permite uma melhor extensão e manutenção.
 Em vez e colocar toda a personalização específica no sistema central com muita complexidade ciclomática, é muito melhor criar um componente de plug-in separado para cada dispositivo eletrônico avalidado. Adicionar um novo dispositivo eletrônica para avaliar é uma simples questão de adicionar um novo componetente de plug-in  atualizar o registro
+Separa o sistema em um núcleo leve e estável, responsável pelas funções básicas, e plug-ins independentes, que adicionam recursos específicos. Essa abordagem reduz a complexidade do sistema central, aumenta a capacidade de expansão e mantém a estrutura modular e organizada.
+
+### Componentes de Plug-in
+
+Os componentes de plug-in são módulos autônomos e independentes, responsáveis por adicionar funcionalidades específicas e melhorar o sistema central sem alterar seu núcleo. Eles ajudam a isolar partes do código mais voláteis, facilitando a manutenção e os testes.
+
+A comunicação entre o plug-in e o sistema central é geralmente ponto a ponto, feita por chamadas de métodos ou funções. Esses componentes podem funcionar de duas formas:
+
+**Em tempo de execução:** podem ser adicionados ou removidos sem reinstalar o sistema, sendo gerenciados por ferramentas como OSGi, Penrose, Jigsaw ou Prism.
+
+**Baseados em compilação:** são mais simples, mas exigem reimplantação do sistema ao serem alterados.
+
+Na prática, plug-ins podem ser implementados como bibliotecas compartilhadas (JAR, DLL, Gem, etc.), com cada uma representando um módulo independente, como no exemplo de plug-ins criados para avaliar diferentes dispositivos eletrônicos.
+
+A abordagem de acesso remoto permite que os componentes de plug-in sejam implementados como serviços individuais, comunicando-se com o sistema central de forma independente e, muitas vezes, assíncrona. Essa estratégia amplia as possibilidades de escalabilidade e flexibilidade da arquitetura Microkernel.
+
+## Benefícios do Acesso Remoto
+
+- Maior desacoplamento entre o sistema central e os plug-ins.
+- Melhor escalabilidade e aumento da taxa de processamento.
+- Atualizações em tempo de execução, sem necessidade de reimplantação.
+- Comunicação assíncrona, melhorando a experiência do usuário.
+
+Exemplo: No sistema de reciclagem de eletrônicos, o sistema central pode solicitar a avaliação de um dispositivo de forma assíncrona. Quando o plug-in termina a avaliação, ele notifica o sistema central, que, por sua vez, informa o usuário sobre a conclusão.
+
+Apesar dos benefícios, essa abordagem transforma o microkernel em uma arquitetura distribuída, o que:
+
+- Aumenta a complexidade da implementação e da implantação.
+- Eleva os custos de manutenção.
+- Exige maior controle de falhas, pois se um plug-in remoto não responder, a requisição falha (diferente da versão monolítica).
+
+Por isso, a decisão entre comunicação local (ponto a ponto) ou remota deve ser feita com base nos requisitos e nas necessidades do sistema, analisando cuidadosamente os trade-offs.
+
+## Armazenamento de Dados
+
+Plug-ins não devem acessar diretamente o banco de dados central, para evitar dependências e manter o desacoplamento.
+
+O sistema central é responsável por intermediar o acesso e enviar aos plug-ins apenas os dados necessários.
+Cada plug-in pode possuir seu próprio armazenamento local (como um banco de dados leve ou mecanismo de regras), usado apenas por ele.
+
+Esse armazenamento pode ser externo ou embutido na própria implementação.
