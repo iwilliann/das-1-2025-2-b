@@ -421,6 +421,8 @@ Os filtros são autônomos e independentes, geralmente sem estado, e devem reali
 As classificações das características da arquitetura servem para avaliar o desempenho e a adequação de um estilo arquitetural em relação a diferentes atributos. Essa avaliação é normalmente representada em uma escala de estrelas:
 As definições detalhadas de cada característica podem ser encontradas no Capítulo 4, onde são classificadas como operacionais, estruturais ou transversais.
 
+## Aula 27/10/2025
+
 ## Estilo Pipeline
 
 O estilo de arquitetura Pipeline (Pipes and Filters) é considerado uma arquitetura particionada tecnicamente, pois divide a lógica da aplicação em filtros específicos — produtor, verificador, transformador e consumidor — que processam dados de forma sequencial e independente.
@@ -440,6 +442,16 @@ Mesmo sendo modular, esse estilo geralmente é implementado como uma aplicação
 ## Exemplo
 
 Assim como em um pipeline de processamento, cada filtro executa uma etapa isolada — por exemplo, ler dados, transformá-los, validar informações e exibir o resultado. Essa abordagem demonstra como a combinação de componentes simples pode resolver problemas complexos de forma eficiente.
+
+## Classificações das Características da Arquitetura
+
+O estilo pipeline é uma arquitetura particionada tecnicamente devido ao particionamento da lógica da aplicação nos tipos de filtros (produtor, verificador, transformador e consumidor). O quantum seria sempre 1 por conta do pipeline ser implementado de forma monolítica.
+
+Se destaca pelo baixo custo, simplicidade e modularidade. Por ser monolítica, evita as dificuldades encontradas em arquiteturas distribuídas, sendo mais fácil de entender, desenvolver e manter.
+
+As classificações de implementabilidade e testabilidade ficam em um nível mediano, porém um pouco melhores que na arquitetura em camadas, graças aos filtros modulares. A confiabilidade também é média, pois a ausência de tráfego de rede reduz problemas, mas a natureza monolítica exige testar e implantar toda a aplicação a cada mudança, o que limita a robustez.
+
+O pipeline tem baixa elasticidade e escalabilidade, principalmente devido ao seu formato monolítico, tornando difícil escalar partes específicas sem técnicas avançadas como multithreading ou mensageria. Além disso, não há boa tolerância a falhas: um erro pequeno, como falta de memória em um único ponto, pode derrubar toda a aplicação.
 
 ## Aula 03/11/2025
 
